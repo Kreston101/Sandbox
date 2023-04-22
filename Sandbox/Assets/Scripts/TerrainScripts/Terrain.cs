@@ -9,24 +9,18 @@ public class Terrain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        terrainColor = Random.ColorHSV(0f, 1f, 0f, 1f, 0f, 1f);
+        //terrainColor = Random.ColorHSV(0f, 1f, 0f, 1f, 0f, 1f);
 
-        for (int x = -1; x < 2; x++)
+        for (int x = -2; x < 3; x++)
         {
-            for (int y = -1; y < 2; y++)
+            for (int y = -2; y < 3; y++)
             {
                 GameObject tempTile = Instantiate(tile, 
                     new Vector3(gameObject.transform.position.x + x, gameObject.transform.position.y + y, 0), 
                     Quaternion.identity, 
                     gameObject.transform);
-                tempTile.GetComponent<SpriteRenderer>().color = terrainColor;
+                //tempTile.GetComponent<SpriteRenderer>().color = terrainColor;
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
