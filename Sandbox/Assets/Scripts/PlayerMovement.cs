@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float speed;
     public Animator animator;
 
     private Vector2 movement;
+    private float playerSpeed;
     void Start()
     {
-        
+        playerSpeed = GetComponent<PlayerProperties>().speed;
     }
 
     void Update()
@@ -25,6 +25,6 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+        rb.MovePosition(rb.position + movement * playerSpeed * Time.deltaTime);
     }
 }
