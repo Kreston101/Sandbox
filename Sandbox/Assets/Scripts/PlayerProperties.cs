@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerProperties : MonoBehaviour
 {
     public float speed;
-    public int health;
+    public float health;
     public float damage;
     public float fireRate;
     public List<GameObject> targets;
@@ -14,6 +14,7 @@ public class PlayerProperties : MonoBehaviour
     private SpriteRenderer spriteFace;
     [SerializeField]
     private Sprite[] faces;
+    private bool cooldown;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,14 @@ public class PlayerProperties : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (cooldown == false)
+            {
+                StartCoroutine(WeaponDelay(1f));
+                DamageEnemies();
+            }
+        }
     }
 
     public void TakenDamage() //prep for name changes
@@ -44,5 +52,21 @@ public class PlayerProperties : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         spriteFace.sprite = faces[0];
+    }
+
+    private IEnumerator WeaponDelay(float delay)
+    {
+        cooldown = true;
+        yield return new WaitForSeconds(delay);
+        cooldown = false;
+    }
+
+    private void DamageEnemies()
+    {
+        Debug.Log("bang");
+        foreach(GameObject enemy in targets)
+        {
+            enemy.GetComponent<Obstacle>().health -= damage;
+        }
     }
 }
