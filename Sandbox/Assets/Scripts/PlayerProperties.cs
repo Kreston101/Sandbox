@@ -66,7 +66,9 @@ public class PlayerProperties : MonoBehaviour
         Debug.Log("bang");
         foreach(GameObject enemy in targets)
         {
-            enemy.GetComponent<Obstacle>().health -= damage;
+            //remember to do tag checking here
+            //obstacles can and will be a thing
+            enemy.GetComponent<Enemies>().health -= damage;
         }
     }
 }
