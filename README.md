@@ -7,7 +7,7 @@ Checklist copied from my google keep
 - [x] "Finalize" Kat
 - [x] Health systems
 - [x] Get shooting mechanics
-- [ ] First enemy
+- [x] First enemy
 - [ ] Draw some grass, make the board look better sheesh
 - [ ] We probably need a lot more enemies
 - [ ] Health system uis
