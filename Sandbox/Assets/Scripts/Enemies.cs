@@ -68,4 +68,9 @@ public class Enemies : MonoBehaviour //for all intents and purposes, basic spide
         Vector2 movementDir = Vector3.Normalize(playerPos - transform.position);
         rb.MovePosition(rb.position + movementDir * 2 * Time.deltaTime);
     }
+
+    public void TakeDamage(float damageRecieved)
+    {
+        health -= damageRecieved;
+    }
 }

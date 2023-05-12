@@ -42,4 +42,9 @@ public class Obstacle : MonoBehaviour
             Debug.Log("exited trigger");
         }
     }
+
+    public void TakeDamage(float damageRecieved)
+    {
+        health -= damageRecieved;
+    }
 }

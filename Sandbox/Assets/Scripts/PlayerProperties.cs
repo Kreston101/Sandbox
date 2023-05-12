@@ -34,10 +34,11 @@ public class PlayerProperties : MonoBehaviour
         }
     }
 
-    public void TakenDamage() //prep for name changes
+    public void TakeDamage(float damageRecieved) //prep for name changes
     {
-        health -= 1;
+        health -= damage;
         spriteFace.sprite = faces[1];
+        spriteFace.color = new Color(255,139,139);
         StartCoroutine(Delay(1f));
     }
 
@@ -68,7 +69,7 @@ public class PlayerProperties : MonoBehaviour
         {
             //remember to do tag checking here
             //obstacles can and will be a thing
-            enemy.GetComponent<Enemies>().health -= damage;
+            enemy.GetComponent<Enemies>().TakeDamage(damage);
         }
     }
 }

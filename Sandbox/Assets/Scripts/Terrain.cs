@@ -4,22 +4,36 @@ using UnityEngine;
 
 public class Terrain : MonoBehaviour
 {
-    public GameObject tile;
-    private Color terrainColor;
-    // Start is called before the first frame update
+    public GameObject[] tiles;
+
     void Start()
     {
-        //terrainColor = Random.ColorHSV(0f, 1f, 0f, 1f, 0f, 1f);
-
         for (int x = -2; x < 3; x++)
         {
             for (int y = -2; y < 3; y++)
             {
-                GameObject tempTile = Instantiate(tile, 
-                    new Vector3(gameObject.transform.position.x + x, gameObject.transform.position.y + y, 0), 
-                    Quaternion.identity, 
+                int randTile = Random.Range(0, 5); //4 - large grass 3 2 - specced grass 0 1 - normal grass
+                if (randTile == 4)
+                {
+                    GameObject tempTile = Instantiate(tiles[2],
+                    new Vector3(gameObject.transform.position.x + x, gameObject.transform.position.y + y, 0),
+                    Quaternion.identity,
                     gameObject.transform);
-                //tempTile.GetComponent<SpriteRenderer>().color = terrainColor;
+                }
+                else if(randTile == 3) // >= 3
+                {
+                    GameObject tempTile = Instantiate(tiles[1],
+                    new Vector3(gameObject.transform.position.x + x, gameObject.transform.position.y + y, 0),
+                    Quaternion.identity,
+                    gameObject.transform);
+                }
+                else
+                {
+                    GameObject tempTile = Instantiate(tiles[0],
+                    new Vector3(gameObject.transform.position.x + x, gameObject.transform.position.y + y, 0),
+                    Quaternion.identity,
+                    gameObject.transform);
+                }
             }
         }
     }
