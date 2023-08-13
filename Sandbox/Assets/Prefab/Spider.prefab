@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  damage: 4
 --- !u!61 &8527323148906732447
 BoxCollider2D:
   m_ObjectHideFlags: 0

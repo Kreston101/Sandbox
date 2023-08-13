@@ -9,6 +9,7 @@ using UnityEngine;
 public class Enemies : MonoBehaviour //for all intents and purposes, basic spider, but i m not undescided shit long ass names
 {
     public float health;
+    public float damage;
 
     private GameManager gm;
     private Rigidbody2D rb;

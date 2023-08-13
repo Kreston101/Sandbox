@@ -32,6 +32,11 @@ public class PlayerProperties : MonoBehaviour
                 DamageEnemies();
             }
         }
+
+        if(health <= 0)
+        {
+            spriteFace.sprite = faces[3];
+        }
     }
 
     public void TakeDamage(float damageRecieved) //prep for name changes
@@ -70,6 +75,14 @@ public class PlayerProperties : MonoBehaviour
             //remember to do tag checking here
             //obstacles can and will be a thing
             enemy.GetComponent<Enemies>().TakeDamage(damage);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Enemy")
+        {
+            TakeDamage(collision.GetComponent<Enemies>().damage);
         }
     }
 }
