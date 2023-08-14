@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ConwaysGameOfLife : MonoBehaviour
 {
-    //Reminder to try that new indexing method (wait that might be very messy-)
     public GameObject tile;
     public int xLength;
     public int yLength;
@@ -14,7 +13,6 @@ public class ConwaysGameOfLife : MonoBehaviour
     public List<List<GameObject>> rowLists = new List<List<GameObject>>();
 
     public bool start = false;
-    public bool stepTaken = false;
 
     void Start()
     {
@@ -27,102 +25,70 @@ public class ConwaysGameOfLife : MonoBehaviour
         }
         transform.position = new Vector3(-20, -9, 0);
         int tileIndex = 0;
-        for (int i = 0; i < 19; i++)
+        for (int i = 0; i < yLength; i++)
         {
             List<GameObject> yRow = new List<GameObject>();
-            for(int xTiles = tileIndex; xTiles < tileIndex + 41; xTiles++)
+            for (int xTiles = tileIndex; xTiles < tileIndex + xLength; xTiles++)
             {
                 yRow.Add(allTiles[xTiles]);
-                //Debug.Log($"added{allTiles[xTiles]}");
             }
             rowLists.Add(yRow);
-            tileIndex += 41;
+            tileIndex += xLength;
+        }
+
+        for (int rowNum = 0; rowNum < rowLists.Count; rowNum++)
+        {
+            for (int tileNum = 0; tileNum < rowLists[rowNum].Count; tileNum++)
+            {
+                FindTileNeighbours(rowNum, tileNum);
+            }
         }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            start = true;
-            StartCoroutine(Step());
-        }
 
-        if (start == true)
-        {
-            if(stepTaken == true)
-            {
-                //Debug.Log(tileLists.Count);
-                for (int rowNum = 0; rowNum < rowLists.Count; rowNum++)
-                {
-                    for (int tileIndex = 0; tileIndex < rowLists[rowNum].Count; tileIndex++)
-                    {
-                        GameObject tile = rowLists[rowNum][tileIndex];
-                        int liveNeighbours = FindTileNeighbours(rowNum, tileIndex);
-                        switch (liveNeighbours)
-                        {
-                            case 0:
-                                tile.GetComponent<ConwayTile>().SetState(false);
-                                break;
-                            case 1:
-                                tile.GetComponent<ConwayTile>().SetState(false);
-                                break;
-                            case 2:
-                                break;
-                            case 3:
-                                tile.GetComponent<ConwayTile>().SetState(true);
-                                break;
-                            case 4:
-                                tile.GetComponent<ConwayTile>().SetState(false);
-                                break;
-                        }
-                    }
-                }
-            } 
-        }
     }
 
-    public int FindTileNeighbours(int rowIndex, int tileIndex)
+    public void FindTileNeighbours(int rowIndex, int tileIndex)
     {
-        int liveNeighbours = 0;
+        List<GameObject> neighbourList = rowLists[rowIndex][tileIndex].GetComponent<ConwayTile>().neighbours;
         //right and left
         if (tileIndex + 1 < rowLists[rowIndex].Count)
         {
-            if (rowLists[rowIndex][tileIndex + 1].GetComponent<ConwayTile>().cellAlive == true)
-            {
-                liveNeighbours++;
-            }
+            neighbourList.Add(rowLists[rowIndex][tileIndex + 1]);
         }
         if (tileIndex - 1 >= 0)
         {
-            if (rowLists[rowIndex][tileIndex - 1].GetComponent<ConwayTile>().cellAlive == true)
-            {
-                liveNeighbours++;
-            }
+            neighbourList.Add(rowLists[rowIndex][tileIndex - 1]);
         }
-        //above and below
+        //above
         if (rowIndex + 1 < rowLists.Count)
         {
-            if (rowLists[rowIndex + 1][tileIndex].GetComponent<ConwayTile>().cellAlive == true)
+            neighbourList.Add(rowLists[rowIndex + 1][tileIndex]);
+
+            if (tileIndex + 1 < rowLists[rowIndex].Count)
             {
-                liveNeighbours++;
+                neighbourList.Add(rowLists[rowIndex + 1][tileIndex + 1]);
+            }
+            if (tileIndex - 1 >= 0)
+            {
+                neighbourList.Add(rowLists[rowIndex + 1][tileIndex - 1]);
             }
         }
+        //below
         if (rowIndex - 1 >= 0)
         {
-            if (rowLists[rowIndex - 1][tileIndex].GetComponent<ConwayTile>().cellAlive == true)
+            neighbourList.Add(rowLists[rowIndex - 1][tileIndex]);
+
+            if (tileIndex + 1 < rowLists[rowIndex].Count)
             {
-                liveNeighbours++;
+                neighbourList.Add(rowLists[rowIndex - 1][tileIndex + 1]);
+            }
+            if (tileIndex - 1 >= 0)
+            {
+                neighbourList.Add(rowLists[rowIndex - 1][tileIndex - 1]);
             }
         }
-        return liveNeighbours;
-    }
-
-    public IEnumerator Step()
-    {
-        stepTaken = false;
-
-        yield return new WaitUntil(() => stepTaken == true);
     }
 }
-

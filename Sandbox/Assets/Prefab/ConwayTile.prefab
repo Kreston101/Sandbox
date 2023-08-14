@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellAlive: 0
+  anchor: {fileID: 8616409366924361157, guid: 2c52decf461e99642be5efb3035ef4a7, type: 3}
+  neighbours: []
 --- !u!61 &5316693738372722169
 BoxCollider2D:
   m_ObjectHideFlags: 0
