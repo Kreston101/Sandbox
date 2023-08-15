@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class ConwaysGameOfLife : MonoBehaviour
     public List<List<GameObject>> rowLists = new List<List<GameObject>>();
 
     public bool start = false;
+    public bool tilesReady = false;
 
     void Start()
     {
@@ -45,9 +47,39 @@ public class ConwaysGameOfLife : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            start = true;
+            Debug.Log("started tiles");
+        }
 
+        if (start == true)
+        {
+            StartCoroutine(Step());
+            if (tilesReady == true)
+            {
+                foreach (GameObject tile in allTiles)
+                {
+                    tile.GetComponent<ConwayTile>().SetState();
+                }
+            }
+        }
+    }
+
+    private IEnumerator Step()
+    {
+        Debug.Log("begin switch");
+        tilesReady = false;
+        foreach (GameObject tile in allTiles)
+        {
+            tile.GetComponent<ConwayTile>().CheckNeighbours();
+            Debug.Log(tile.GetComponent<ConwayTile>().readyToChange);
+        }
+        tilesReady = true;
+        yield return new WaitUntil(() => tilesReady == true);
+        Debug.Log("end switch");
     }
 
     public void FindTileNeighbours(int rowIndex, int tileIndex)

@@ -8,7 +8,8 @@ public class ConwayTile : MonoBehaviour
     public GameObject anchor;
     public List<GameObject> neighbours;
 
-    public bool started = false;
+    public bool readyToChange = false;
+    public bool nextState = false;
 
     private SpriteRenderer sr;
 
@@ -20,25 +21,21 @@ public class ConwayTile : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            started = true;
-            Debug.Log("started");
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    start = true;
+        //    Debug.Log("started tiles");
+        //}
+
+        //if(start == true)
+        //{
+        //    Debug.Log("running tiles");
+        //}
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    public void SetState()
     {
-        if(started == true)
-        {
-            CheckNeighbours();
-        }
-    }
-
-    public void SetState(bool isAlive)
-    {
-        cellAlive = isAlive;
+        cellAlive = nextState;
         if (cellAlive == true)
         {
             sr.color = Color.green;
@@ -47,21 +44,24 @@ public class ConwayTile : MonoBehaviour
         {
             sr.color = Color.black;
         }
+        readyToChange = false;
     }
 
     private void OnMouseDown()
     {
         if (cellAlive == true)
         {
-            SetState(false);
+            cellAlive = false;
+            sr.color = Color.black;
         }
         else
         {
-            SetState(true);
+            cellAlive = true;
+            sr.color = Color.green;
         }
     }
 
-    private void CheckNeighbours()
+    public bool CheckNeighbours()
     {
         int liveNeighbours = 0;
         foreach(GameObject tile in neighbours)
@@ -74,31 +74,40 @@ public class ConwayTile : MonoBehaviour
         switch (liveNeighbours)
         {
             case 0:
-                SetState(false);
+                nextState = false;
                 break;
             case 1:
-                SetState(false);
+                nextState = false;
                 break;
             case 2:
+                if(cellAlive == true)
+                {
+                    nextState = true;
+                }
+                else
+                {
+                    nextState = false;
+                }
                 break;
             case 3:
-                SetState(true);
+                nextState = true;
                 break;
             case 4:
-                SetState(false);
+                nextState = false;
                 break;
             case 5:
-                SetState(false);
+                nextState = false;
                 break;
             case 6:
-                SetState(false);
+                nextState = false;
                 break;
             case 7:
-                SetState(false);
+                nextState = false;
                 break;
             case 8:
-                SetState(false);
+                nextState = false;
                 break;
         }
+        return readyToChange = true;
     }
 }
