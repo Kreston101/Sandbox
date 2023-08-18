@@ -25,5 +25,5 @@ Random game idea #1:
 staying in the sandbox
 
 Other ideas:
-- [ ] Conways game of life
+- [x] Conways game of life
 - [ ] Create and test sonar system for puzzle game
