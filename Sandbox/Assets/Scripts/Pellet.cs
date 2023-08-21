@@ -13,13 +13,17 @@ public class Pellet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //Destroy(gameObject, 5f);
+
+        float xValue = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180) * 1;
+        float yValue = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180) * 1;
+
+        direction = new Vector3(xValue, yValue, 0);
+        transform.eulerAngles = new Vector3(0, 0, angle * -1);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.rotation = angle;
-        //rb.MovePosition(rb.transform.position + Vector3.up * bulletSpeed * Time.deltaTime);
+        rb.MovePosition(transform.position + direction.normalized * bulletSpeed * Time.deltaTime);
     }
 }

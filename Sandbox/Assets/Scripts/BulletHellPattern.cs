@@ -13,17 +13,17 @@ public class BulletHellPattern : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnPatternCircle();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (!delayRunning)
-        //{
-        //    SpawnPatternCircle();
-        //    StartCoroutine(PatternDelay());
-        //}
+        if (!delayRunning)
+        {
+            SpawnPatternCircle();
+            StartCoroutine(PatternDelay());
+        }
     }
 
     private IEnumerator PatternDelay()
@@ -42,7 +42,15 @@ public class BulletHellPattern : MonoBehaviour
         for(int i = 0; i < bulletCount; i++)
         {
             pelletHolder = Instantiate(pellet, gameObject.transform.position, Quaternion.identity);
-            pelletHolder.GetComponent<Pellet>().angle = angle*i;
+            pelletHolder.GetComponent<Pellet>().angle = angle * i;
+            //float xValue = pellet.transform.position.x + Mathf.Sin((angle * i * Mathf.PI) / 180) * 1;
+            //float yValue = pellet.transform.position.x + Mathf.Cos((angle * i * Mathf.PI) / 180) * 1;
+
+            //Vector3 direction = new Vector3(xValue, yValue, 0);
+            //Debug.Log(direction.normalized);
+            //Debug.Log(pelletHolder.transform.position);
+            //.Log(pelletHolder.transform.position + direction.normalized);
+            //pelletHolder.GetComponent<Rigidbody2D>().MovePosition(pelletHolder.transform.position + direction.normalized * bulletSpeed);
         }
     }
 }

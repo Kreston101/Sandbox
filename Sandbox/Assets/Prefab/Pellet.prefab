@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5490180493434607795}
   - component: {fileID: 5490180493434607794}
   - component: {fileID: 5490180493434607793}
-  - component: {fileID: 1589596481475000344}
+  - component: {fileID: -4905276891013530581}
   m_Layer: 0
   m_Name: Pellet
   m_TagString: Untagged
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1589596481475000344
+--- !u!114 &-4905276891013530581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,4 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9dc172bddecfa4db0203c88560dbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 2
+  bulletSpeed: 1
+  angle: 0
