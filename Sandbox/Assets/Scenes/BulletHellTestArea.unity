@@ -221,8 +221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pellet: {fileID: 5490180493434607792, guid: dcff8167b4491eb418fc1d7171181472, type: 3}
-  bulletCount: 4
-  delay: 2
+  bulletCount: 8
+  delay: 0.5
 --- !u!1 &1717173385
 GameObject:
   m_ObjectHideFlags: 0

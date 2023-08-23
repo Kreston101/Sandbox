@@ -19,6 +19,8 @@ public class Pellet : MonoBehaviour
 
         direction = new Vector3(xValue, yValue, 0);
         transform.eulerAngles = new Vector3(0, 0, angle * -1);
+
+        Destroy(gameObject, 5f);
     }
 
     // Update is called once per frame
