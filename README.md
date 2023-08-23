@@ -18,7 +18,7 @@ Random game idea #1:
 - [x] Draw some grass, make the board look better sheesh
 - [ ] Make better grass again
 - [ ] Obstacles
-- [ ] One ranged enemy
+- [x] One ranged enemy
 - [ ] slow tanky enemy
 - [ ] enemy varients
 - [ ] Actually make a playable game instead of
