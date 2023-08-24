@@ -28,6 +28,7 @@ public class Enemies : MonoBehaviour //for all intents and purposes, basic spide
         //on the player side, start a coroutine
         //if player not out of hitbox by then, damage player
 
+        //object queueing btw
         if (health <= 0)
         {
             gm.RemoveTarget(gameObject);

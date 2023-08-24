@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //omg, organisation :O
+    [Header("Prefabs")]
     public GameObject player;
     public PlayerProperties playerProp;
     public GameObject[] enemies;
+
+    [Header("Spawn settings")]
     public float spawnRange = 12f;
+    public bool spawnToggle = true;
+    private bool canSpawn = true;
+    public float spawnDelay = 1f;
+
+    [Header("Huds")]
     public GameObject huds;
 
-    public bool spawnToggle = true;
-
-    private bool canSpawn = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +35,11 @@ public class GameManager : MonoBehaviour
             SpawnEnemies();
         }
 
+        //i think i should be using the player call this but...
         huds.GetComponent<Huds>().ChangeHealthBar(playerProp.health);
     }
 
+    //literally only applies to one(?) character
     public void AddToTargets(GameObject enemyInRange)
     {
         if (playerProp.targets.Count <= 5)
@@ -47,6 +55,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("target removed");
     }
 
+    //it works i guess
     public void SpawnEnemies()
     {
         int randInt = Random.Range(1, 4);
@@ -84,10 +93,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine("SpawnDelay");
     }
 
+    //multiple differen types of delays for different enemies?
     private IEnumerator SpawnDelay()
     {
         canSpawn = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(spawnDelay);
         canSpawn = true;
     }
 }

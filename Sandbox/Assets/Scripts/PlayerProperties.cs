@@ -15,6 +15,7 @@ public class PlayerProperties : MonoBehaviour
     [SerializeField]
     private Sprite[] faces;
     private bool cooldown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,14 +76,6 @@ public class PlayerProperties : MonoBehaviour
             //remember to do tag checking here
             //obstacles can and will be a thing
             enemy.GetComponent<Enemies>().TakeDamage(damage);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Enemy")
-        {
-            TakeDamage(collision.GetComponent<Enemies>().damage);
         }
     }
 }
