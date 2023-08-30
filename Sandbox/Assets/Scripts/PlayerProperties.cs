@@ -8,7 +8,9 @@ public class PlayerProperties : MonoBehaviour
     public float health;
     public float damage;
     public float fireRate;
-    public List<GameObject> targets;
+    public GameObject weaponHand;
+    public GameObject bullet;
+    public GameObject[] bulletSpawnPoint;
 
     [SerializeField]
     private SpriteRenderer spriteFace;
@@ -16,21 +18,15 @@ public class PlayerProperties : MonoBehaviour
     private Sprite[] faces;
     private bool cooldown;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             if (cooldown == false)
             {
-                StartCoroutine(WeaponDelay(1f));
-                DamageEnemies();
+                StartCoroutine(WeaponDelay(fireRate));
+                Fire();
             }
         }
 
@@ -44,7 +40,6 @@ public class PlayerProperties : MonoBehaviour
     {
         health -= damage;
         spriteFace.sprite = faces[1];
-        spriteFace.color = new Color(255,139,139);
         StartCoroutine(Delay(1f));
     }
 
@@ -68,14 +63,14 @@ public class PlayerProperties : MonoBehaviour
         cooldown = false;
     }
 
-    private void DamageEnemies()
+    private void Fire()
     {
-        Debug.Log("bang");
-        foreach(GameObject enemy in targets)
+        GameObject bulletHolder;
+        foreach(GameObject bulletSpawn in bulletSpawnPoint)
         {
-            //remember to do tag checking here
-            //obstacles can and will be a thing
-            enemy.GetComponent<Enemies>().TakeDamage(damage);
+            bulletHolder = Instantiate(bullet, bulletSpawn.transform.position, Quaternion.identity);
+            Rigidbody2D rb2d = bulletHolder.GetComponent<Rigidbody2D>();
+            rb2d.velocity = bulletHolder.GetComponent<Bullet>().bulletSpeed * bulletSpawn.transform.up;
         }
     }
 }

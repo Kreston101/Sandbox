@@ -39,22 +39,6 @@ public class GameManager : MonoBehaviour
         huds.GetComponent<Huds>().ChangeHealthBar(playerProp.health);
     }
 
-    //literally only applies to one(?) character
-    public void AddToTargets(GameObject enemyInRange)
-    {
-        if (playerProp.targets.Count <= 5)
-        {
-            playerProp.targets.Add(enemyInRange);
-            Debug.Log("Target ADDED");
-        }
-    }
-
-    public void RemoveTarget(GameObject enemyExited)
-    {
-        playerProp.targets.Remove(enemyExited);
-        Debug.Log("target removed");
-    }
-
     //it works i guess
     public void SpawnEnemies()
     {
