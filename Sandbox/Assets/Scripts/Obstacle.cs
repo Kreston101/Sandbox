@@ -18,7 +18,6 @@ public class Obstacle : MonoBehaviour
     {
         if(health <= 0)
         {
-            gm.RemoveTarget(gameObject);
             Destroy(gameObject);
         }
     }
@@ -27,19 +26,7 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.CompareTag("Hitbox"))
         {
-            //call gamemanager to put this obj into player targets list
-            gm.AddToTargets(gameObject);
             Debug.Log("entered trigger");
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        //remove this obj from the targets list
-        if (collision.CompareTag("Hitbox"))
-        {
-            gm.RemoveTarget(gameObject);
-            Debug.Log("exited trigger");
         }
     }
 

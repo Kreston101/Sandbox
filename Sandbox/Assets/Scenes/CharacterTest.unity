@@ -225,7 +225,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 8527323148906732418, guid: 72a339298bdc70f45b565f47bc84a337, type: 3}
   spawnRange: 12
-  spawnToggle: 1
+  spawnToggle: 0
   spawnDelay: 1
   huds: {fileID: 1013901367}
 --- !u!4 &126034123
@@ -278,9 +278,9 @@ RectTransform:
   m_Father: {fileID: 1706168097}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -722.915, y: 404.00006}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 258, y: -63.80005}
   m_SizeDelta: {x: 324.1701, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &156056599
@@ -372,6 +372,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156056597}
   m_CullTransparentMesh: 1
+--- !u!1 &347003421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3082086065229798129, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
+  m_PrefabInstance: {fileID: 8695624059251130263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &506130928
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,6 +926,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 156056599}
   playerIcon: {fileID: 2104168901}
+--- !u!1 &1045463250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6170077437454288953, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
+  m_PrefabInstance: {fileID: 8695624059251130263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1277747083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1373,11 @@ MonoBehaviour:
   enemies:
   - {fileID: 8527323148906732418, guid: 72a339298bdc70f45b565f47bc84a337, type: 3}
   enemieToSpawn: {fileID: 8527323148906732418, guid: 72a339298bdc70f45b565f47bc84a337, type: 3}
+--- !u!1 &1687006329 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1589509662537354277, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
+  m_PrefabInstance: {fileID: 8695624059251130263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1706168096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,10 +1923,10 @@ RectTransform:
   m_Father: {fileID: 1706168097}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -910, y: 405}
-  m_SizeDelta: {x: 78.734, y: 74.359}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 60.633057, y: -54.19995}
+  m_SizeDelta: {x: 78.73401, y: 74.35901}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2104168901
 MonoBehaviour:
@@ -1958,22 +1973,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8695624059463451545, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8695624059463451545, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8695624059463451545, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
-      propertyPath: m_Color.r
-      value: 1
+    - target: {fileID: 8695624060165042385, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
+      propertyPath: bulletSpawnPoint.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8695624060165042385, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
-      propertyPath: health
-      value: 20
-      objectReference: {fileID: 0}
+      propertyPath: bulletSpawnPoint.Array.data[0]
+      value: 
+      objectReference: {fileID: 347003421}
+    - target: {fileID: 8695624060165042385, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
+      propertyPath: bulletSpawnPoint.Array.data[1]
+      value: 
+      objectReference: {fileID: 1045463250}
+    - target: {fileID: 8695624060165042385, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
+      propertyPath: bulletSpawnPoint.Array.data[2]
+      value: 
+      objectReference: {fileID: 1687006329}
     - target: {fileID: 8695624060165042390, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2021,18 +2036,6 @@ PrefabInstance:
     - target: {fileID: 8695624060165042391, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
       propertyPath: m_Name
       value: Kat
-      objectReference: {fileID: 0}
-    - target: {fileID: 8695624060372244608, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8695624060372244608, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8695624060372244608, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}

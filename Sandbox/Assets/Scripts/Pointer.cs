@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Pointer : MonoBehaviour
 {
-    public GameObject character;
-
     // Start is called before the first frame update
     void Start()
     {
