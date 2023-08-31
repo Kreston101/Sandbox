@@ -18,7 +18,6 @@ public class PlayerProperties : MonoBehaviour
     private Sprite[] faces;
     private bool cooldown;
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButton(0))
@@ -36,14 +35,14 @@ public class PlayerProperties : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damageRecieved) //prep for name changes
+    public void TakeDamage(float damageRecieved) //prep for name changes, inheritable
     {
         health -= damage;
         spriteFace.sprite = faces[1];
         StartCoroutine(Delay(1f));
     }
 
-    public void Healed() //prep for name changes
+    public void Healed() //prep for name changes, inheritable
     {
         health += 1;
         spriteFace.sprite = faces[2];
@@ -70,7 +69,16 @@ public class PlayerProperties : MonoBehaviour
         {
             bulletHolder = Instantiate(bullet, bulletSpawn.transform.position, Quaternion.identity);
             Rigidbody2D rb2d = bulletHolder.GetComponent<Rigidbody2D>();
+            rb2d.GetComponent<Bullet>().damage = damage;
             rb2d.velocity = bulletHolder.GetComponent<Bullet>().bulletSpeed * bulletSpawn.transform.up;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(collision.GetComponent<Enemies>().damage);
         }
     }
 }

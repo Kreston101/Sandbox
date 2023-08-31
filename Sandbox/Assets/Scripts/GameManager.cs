@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
         }
 
         //i think i should be using the player call this but...
+        if(playerProp.health <= 0)
+        {
+            Time.timeScale = 0;
+        }
         huds.GetComponent<Huds>().ChangeHealthBar(playerProp.health);
     }
 
