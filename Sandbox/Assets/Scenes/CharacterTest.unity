@@ -225,7 +225,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 8527323148906732418, guid: 72a339298bdc70f45b565f47bc84a337, type: 3}
   spawnRange: 12
-  spawnToggle: 0
+  spawnToggle: 1
   spawnDelay: 1
   huds: {fileID: 1013901367}
 --- !u!4 &126034123
@@ -1973,6 +1973,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8695624060165042385, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8695624060165042385, guid: ceaf449e84646f0418aec1fb4120b0be, type: 3}
       propertyPath: bulletSpawnPoint.Array.size
       value: 3

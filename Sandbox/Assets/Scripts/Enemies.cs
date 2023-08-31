@@ -29,6 +29,7 @@ public class Enemies : MonoBehaviour //for all intents and purposes, basic spide
         //if player not out of hitbox by then, damage player
 
         //object queueing btw
+        //not need/idk?
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -42,9 +43,9 @@ public class Enemies : MonoBehaviour //for all intents and purposes, basic spide
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Hitbox"))
+        if (collision.CompareTag("PlayerBullet"))
         {
-            Debug.Log("entered trigger");
+            TakeDamage(collision.GetComponent<Bullet>().damage);
         }
     }
 
