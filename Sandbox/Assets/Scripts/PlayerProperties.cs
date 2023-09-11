@@ -64,13 +64,16 @@ public class PlayerProperties : MonoBehaviour
 
     private void Fire()
     {
+        Debug.Log("bang");
         GameObject bulletHolder;
         foreach(GameObject bulletSpawn in bulletSpawnPoint)
         {
             bulletHolder = Instantiate(bullet, bulletSpawn.transform.position, Quaternion.identity);
+            Debug.Log(bulletHolder.transform);
             Rigidbody2D rb2d = bulletHolder.GetComponent<Rigidbody2D>();
             rb2d.GetComponent<Bullet>().damage = damage;
             rb2d.velocity = bulletHolder.GetComponent<Bullet>().bulletSpeed * bulletSpawn.transform.up;
+            bulletHolder.GetComponent<Bullet>().angle = weaponHand.transform.eulerAngles.z;
         }
     }
 

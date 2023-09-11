@@ -478,13 +478,13 @@ MonoBehaviour:
   speed: 4
   health: 20
   damage: 5
-  fireRate: 5
-  maxSpread: 0
-  bulletPerShot: 1
+  fireRate: 1
   weaponHand: {fileID: 8695624060299641931}
   bullet: {fileID: 7818504260182805833, guid: 698e39cad75cf0447bd0c11e4a6782fa, type: 3}
   bulletSpawnPoint:
-  - {fileID: 0}
+  - {fileID: 3082086065229798129}
+  - {fileID: 6170077437454288953}
+  - {fileID: 1589509662537354277}
   spriteFace: {fileID: 8695624059463451545}
   faces:
   - {fileID: -1488768980, guid: 20e230259653d6143b1ef7e7694a8c4a, type: 3}

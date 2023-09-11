@@ -8,14 +8,19 @@ public class Bullet : MonoBehaviour
     public float bulletSpeed;
     public float lifeTime;
     public float damage;
+    public float angle;
 
     void Start()
     {
+        //transform.eulerAngles = new Vector3(0, 0, angle + 90);
         Destroy(gameObject, lifeTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if (collision.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
