@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerProp = player.GetComponent<PlayerProperties>();
-        huds.GetComponent<Huds>().SetHealthBar(playerProp.health);
+        huds.GetComponent<Huds>().SetHealthBar(playerProp.maxHealth);
     }
 
     // Update is called once per frame
@@ -36,11 +36,11 @@ public class GameManager : MonoBehaviour
         }
 
         //i think i should be using the player call this but...
-        if(playerProp.health <= 0)
+        if(playerProp.currentHealth <= 0)
         {
             Time.timeScale = 0;
         }
-        huds.GetComponent<Huds>().ChangeHealthBar(playerProp.health);
+        huds.GetComponent<Huds>().ChangeHealthBar(playerProp.currentHealth);
     }
 
     //it works i guess
