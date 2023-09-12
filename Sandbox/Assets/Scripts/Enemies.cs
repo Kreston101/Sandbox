@@ -6,7 +6,7 @@ using UnityEngine;
 //dont enemies nomrally just do the same thing but do more damage over time?
 //the game would get very boring wouldnt it?
 
-public class Enemies : MonoBehaviour //for all intents and purposes, basic spider, but i m not undescided shit long ass names
+public class Enemies : MonoBehaviour, IDamageAble //for all intents and purposes, basic spider, but i m not undescided shit long ass names
 {
     public float health;
     public float damage;

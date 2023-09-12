@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class DebugItems : MonoBehaviour
 {
+    public float debugHeal = 1;
+
     public GameObject[] enemies;
     public GameObject enemieToSpawn;
+
     private GameManager gm;
     private GameObject player;
 
@@ -23,7 +26,7 @@ public class DebugItems : MonoBehaviour
 
     public void HealPlayer()
     {
-        player.GetComponent<PlayerProperties>().Healed();
+        player.GetComponent<PlayerProperties>().Healed(debugHeal);
         Debug.Log("healed player");
     }
 

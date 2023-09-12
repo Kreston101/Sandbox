@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerProperties : MonoBehaviour
+public class PlayerProperties : MonoBehaviour, IDamageAble, IHealable
 {
     public float speed;
-    public float health;
+    public float currentHealth;
+    public float maxHealth;
     public float damage;
     public float fireRate;
     public GameObject weaponHand;
@@ -29,7 +30,7 @@ public class PlayerProperties : MonoBehaviour
             }
         }
 
-        if(health <= 0)
+        if(currentHealth <= 0)
         {
             spriteFace.sprite = faces[3];
         }
@@ -37,14 +38,22 @@ public class PlayerProperties : MonoBehaviour
 
     public void TakeDamage(float damageRecieved) //prep for name changes, inheritable
     {
-        health -= damage;
+        currentHealth -= damage;
         spriteFace.sprite = faces[1];
         StartCoroutine(Delay(1f));
     }
 
-    public void Healed() //prep for name changes, inheritable
+    public void Healed(float healthToHeal) //prep for name changes, inheritable
     {
-        health += 1;
+        if (currentHealth + healthToHeal >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth += healthToHeal;
+        }
+        
         spriteFace.sprite = faces[2];
         StartCoroutine(Delay(1f));
     }
