@@ -1,4 +1,6 @@
 # Sandbox
+Repository suspended due to unity incident, continuing on godot
+
 I think there'll be a version for 3d stuff, but only if i bother with 3d...
 
 also i think i can make check boxes here, can probably shove them in issues tab also
